@@ -191,7 +191,7 @@ if __name__ == "__main__":
     context = ""
     pre_fill_length = args.pre_fill_length
     while(len(tokenizer.encode(context)) < pre_fill_length):
-        for file in glob.glob("../needle/PaulGrahamEssays/*.txt"):
+        for file in glob.glob("../PaulGrahamEssays/*.txt"):
             with open(file, "r") as f:
                 context += f.read()
 
