@@ -1,7 +1,7 @@
 # SeqModels
 
 
-This repository contains the codes of the submission "Neural Attention Search".
+This repository contains the code for the submission "Neural Attention Search".
 
 To train a new nats model, please run the following commands:
 ```
@@ -14,8 +14,8 @@ cd experiments
 python eval.py model.base_dir=\YOUR\PATH\TO\SAVE\MODEL n_gpus=2 dataset.base_dir=\YOUR\PATH\TO\DATASET transformer_args.nats_enable=True
 ```
 
-To fine-tune the dataset, first you need to generate the fine tuning training dataset from LongBench.
-Some of the datasets are from huggingface, while the other datasets need to be collected manually:
+To fine-tune a model, we need to first generate the fine-tuning training dataset.
+Some of the datasets are from Huggingface, while the others need to be collected manually from the corresponding pages:
 ```
 http://curtis.ml.cmu.edu/datasets/hotpot/hotpot_train_v1.1.json
 https://github.com/StonyBrookNLP/musique
@@ -37,19 +37,19 @@ python prepare_longbench_train_data.py  --long_bench_dataset_path \PATH\TO\THE\D
                                         --res_dir \PATH\THAT\YOU\WOULD\LIKE\TO\STORE\THE\DATA \
                                         --tokenizer_path \LLM\PATH
 ```
-and then download the synethetic dataset towards 
+and then download the synthetic dataset towards 
 ```
 cd \PATH\THAT\YOU\WOULD\LIKE\TO\STORE\THE\DATA
 wget https://huggingface.co/datasets/togethercomputer/Long-Data-Collections/resolve/main/fine-tune/booksum.jsonl.zst
 ```
-Now you could fine tune a model on the generated dataset (we currently support Llama and Mistral model families)
+Now you could fine-tune a model on the generated dataset (we currently support Llama and Mistral model families)
 by customizing the corresponding configurations under `experiments/configs/finetune_distill`
 ```
 cd experiments
 python hf_finetune_longbench.py 
 ```
 
-Alternatively, we provide one adpater under adapters folder:
+Alternatively, we provide one adapter under the adapters folder; you could directly run the experiments with the provided adapter:
 ```
 cd experiments/long_bench
 pyhton hf_pred.py --nats_enable --adapter_path adapters/Meta-Llama-3.1-8B-Instruct/nats_3e7_SWindowlen256_lr0.002_wd0.1_train7_mixed/
