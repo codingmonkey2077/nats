@@ -1,4 +1,4 @@
-# SeqModels
+# Neural Attention Search
 
 
 This repository contains the code for the submission "Neural Attention Search".
