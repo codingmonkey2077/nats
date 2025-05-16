@@ -1,0 +1,62 @@
+dataset:
+    source: HF
+    name:  pg19
+    config_name: None
+    overwrite_cache: true
+    base_dir:
+    cache_dir:
+    streaming: false
+    char_level: false
+
+model:
+    name:
+    base_dir:
+    pre_trained_model_path:
+    type: vanilla
+    from_pre_trained: false
+    res_dir:
+    start_size: 4
+    recent_size: 64
+    num_hh_tokens: 64
+
+
+n_gpus: 1
+seed: 0
+
+tokenizer:
+    source: 'tiktoken'
+    model_name: 'gpt2'
+
+model_general:
+    d_model: 768
+
+transformer_args:
+    n_layers: 12
+    n_heads: 12
+    n_kv_heads: 12
+    n_msks: 12
+    multiple_of: 256  # make SwiGLU hidden layer size multiple of large power of 2
+    ffn_dim_multiplier: 4
+    intermediate_size: none
+    norm_eps: 1e-6
+    rope_theta: 500000
+
+    max_batch_size: 32
+    max_seq_len: 1024
+    segment_transformer: true
+
+    apply_pos_emb: True
+    proj_layer_is_ssm: True
+
+
+eval:
+    eval_size: 1024
+    batch_size: 64
+
+
+wandb:
+  name: ${model.name}
+  group: ${dataset.name}_${model.name}
+  project:
+  entity:
+  mode: disabled
