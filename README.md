@@ -52,5 +52,5 @@ python hf_finetune_longbench.py
 Alternatively, we provide one adapter under the adapters folder; you could directly run the experiments with the provided adapter:
 ```
 cd experiments/long_bench
-pyhton hf_pred.py --nats_enable --adapter_path adapters/Meta-Llama-3.1-8B-Instruct/nats_3e7_SWindowlen256_lr0.002_wd0.1_train7_mixed/
+pyhton hf_pred.py --nats_enable --adapter_path adapters --model_name Meta-Llama-3.1-8B-Instruct --adapter_name nats_3e7_SWindowlen256_lr0.002_wd0.1_train7_mixed
 ```
